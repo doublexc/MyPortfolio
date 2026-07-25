@@ -1,0 +1,170 @@
+{
+  "meta": {
+    "version": "1.0.0",
+    "language": "th",
+    "theme": "dark",
+    "lastUpdate": "2026-07-21",
+    "author": ""
+  },
+  "profile": {
+    "firstNameTH": "",
+    "lastNameTH": "",
+    "firstNameEN": "",
+    "lastNameEN": "",
+    "nickname": "",
+    "title": "",
+    "summary": "",
+    "objective": "",
+    "photo": "assets/profile.jpg",
+    "birthday": "",
+    "gender": "",
+    "nationality": "Thai",
+    "religion": "",
+    "address": "",
+    "district": "",
+    "province": "",
+    "country": "Thailand",
+    "zipcode": "",
+    "email": "",
+    "phone": "",
+    "github": "",
+    "website": "",
+    "portfolio": "",
+    "linkedin": ""
+  },
+  "education": [
+    {
+      "degree": "",
+      "university": "",
+      "faculty": "",
+      "major": "",
+      "start": "",
+      "end": "",
+      "gpa": "",
+      "description": ""
+    }
+  ],
+  "experience": [
+    {
+      "company": "",
+      "position": "",
+      "employmentType": "",
+      "location": "",
+      "start": "",
+      "end": "",
+      "working": false,
+      "details": [],
+      "technologies": []
+    }
+  ],
+  "projects": [
+    {
+      "featured": true,
+      "name": "",
+      "subtitle": "",
+      "year": "",
+      "status": "Completed",
+      "role": "Developer",
+      "thumbnail": "",
+      "images": [],
+      "description": "",
+      "problem": "",
+      "solution": "",
+      "result": "",
+      "github": "",
+      "demo": "",
+      "video": "",
+      "technologies": [],
+      "platforms": [],
+      "screenshots": []
+    }
+  ],
+  "skills": [
+    {
+      "category": "Programming",
+      "items": [
+        {
+          "name": "JavaScript",
+          "level": 90
+        }
+      ]
+    }
+  ],
+  "languages": [
+    {
+      "name": "Thai",
+      "level": "Native"
+    }
+  ],
+  "certificates": [
+    {
+      "name": "",
+      "organization": "",
+      "year": "",
+      "credential": "",
+      "url": ""
+    }
+  ],
+  "awards": [
+    {
+      "name": "",
+      "organization": "",
+      "year": "",
+      "description": ""
+    }
+  ],
+  "activities": [
+    {
+      "name": "",
+      "organization": "",
+      "year": "",
+      "description": ""
+    }
+  ],
+  "interests": [],
+  "references": [
+    {
+      "name": "",
+      "position": "",
+      "company": "",
+      "email": "",
+      "phone": ""
+    }
+  ],
+  "social": {
+    "github": "",
+    "facebook": "",
+    "x": "",
+    "instagram": "",
+    "youtube": "",
+    "discord": "",
+    "email": ""
+  },
+  "seo": {
+    "title": "",
+    "description": "",
+    "keywords": [],
+    "image": "assets/cover.png"
+  },
+  "settings": {
+    "showPhoto": true,
+    "showBirthday": false,
+    "showReligion": false,
+    "showObjective": true,
+    "showGPA": true,
+    "showSkillLevel": true,
+    "showCertificates": true,
+    "showAwards": true,
+    "showActivities": true,
+    "showReferences": false
+  },
+  "resume": {
+    "featuredProjects": 3,
+    "maxSkill": 8,
+    "maxExperience": 2
+  },
+  "portfolio": {
+    "showAllProjects": true,
+    "projectPerPage": 4
+  }
+}

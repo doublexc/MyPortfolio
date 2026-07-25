@@ -1,0 +1,187 @@
+npx serve
+
+```markdown
+# Portfolio Website
+
+A responsive personal portfolio website built with **HTML**, **CSS**, and **Vanilla JavaScript**. All portfolio information is managed through a single `config.json` file, making it easy to update without modifying the HTML pages.
+
+---
+
+## ✨ Features
+
+* Fully Responsive Portfolio Website
+* One-page Resume (Printable PDF)
+* Multi-page Portfolio (Printable PDF)
+* Dynamic Content rendering from `data/config.json`
+* Dark Mode Support
+* No Frameworks or Heavy Dependencies
+* GitHub Pages Ready
+* Print-friendly CSS Layout
+
+---
+
+## 📁 Project Structure
+
+```text
+portfolio/
+│
+├── index.html          # Main Portfolio Website
+├── resume.html         # Printable One-page Resume
+├── portfolio.html      # Detailed Portfolio
+│
+├── css/
+│   └── style.css       # Main Stylesheet (Includes Dark Mode & Print styles)
+│
+├── js/
+│   └── render.js       # Core Script (Loads config.json and renders DOM)
+│
+├── data/
+│   └── config.json     # Personal Data & Website Settings
+│
+├── assets/
+│   ├── profile.jpg
+│   ├── favicon.ico
+│   ├── logo.svg
+│   └── projects/
+│       ├── project1.png
+│       ├── project2.png
+│       └── project3.png
+│
+└── README.md
+
+```
+
+---
+
+## 🚀 Getting Started
+
+1. **Clone the repository**
+```bash
+git clone [https://github.com/YOUR_USERNAME/YOUR_REPOSITORY.git](https://github.com/YOUR_USERNAME/YOUR_REPOSITORY.git)
+cd YOUR_REPOSITORY
+
+```
+
+
+2. **Run Local Development Server**
+*Because the project fetches data dynamically from `data/config.json`, it must be run via a local web server (opening `index.html` directly will cause CORS errors).*
+* **Option A: Using Node.js (npx)** *(Recommended)*
+```bash
+npx serve
+
+```
+
+
+* **Option B: Using VS Code**
+Install the **Live Server** extension, right-click `index.html`, and select **Open with Live Server**.
+* **Option C: Using Python**
+```bash
+python -m http.server
+
+```
+
+
+
+
+3. Open your browser and navigate to the address shown in your terminal (e.g., `http://localhost:3000` or `http://localhost:8000`).
+
+---
+
+## ⚙️ Configuration
+
+All personal information is managed inside:
+
+```text
+data/config.json
+
+```
+
+Example structure:
+
+```json
+{
+  "meta": { "language": "th", "theme": "dark" },
+  "profile": { "firstNameTH": "...", "lastNameTH": "..." },
+  "education": [],
+  "experience": [],
+  "skills": [],
+  "projects": [],
+  "languages": [],
+  "certificates": [],
+  "awards": [],
+  "activities": [],
+  "settings": {
+    "showPhoto": true,
+    "showGPA": true,
+    "showSkillLevel": true
+  }
+}
+
+```
+
+No HTML modification is required when updating your info!
+
+---
+
+## 📄 Pages
+
+* **`index.html`**: Main interactive portfolio website.
+* **`resume.html`**: Clean, compact 1-page printable resume layout.
+* **`portfolio.html`**: Detailed multi-page portfolio for job applications.
+
+---
+
+## 🛠️ Technology Stack
+
+* **HTML5** & **CSS3** (Custom Properties, Flexbox, Grid)
+* **Vanilla JavaScript** (ES6+ Async/Await, DOM Manipulation)
+* **JSON** (Data Storage)
+* **GitHub Pages** (Hosting)
+
+---
+
+## 📦 Deployment
+
+1. Push your repository to GitHub.
+2. Go to Repository **Settings** ➔ **Pages**.
+3. Under **Build and deployment**:
+* **Source**: `Deploy from a branch`
+* **Branch**: `main` / `root`
+
+
+4. Click **Save**. Your site will be live at:
+`https://YOUR_USERNAME.github.io/YOUR_REPOSITORY/`
+
+---
+
+## 🖨️ Exporting to PDF
+
+Open `resume.html` or `portfolio.html` in your browser, click the **Print / Save PDF** button (or press `Ctrl + P` / `Cmd + P`), and select **Save as PDF**. Non-printable elements (like buttons and navbars) are hidden automatically.
+
+---
+
+## 📌 Future Improvements
+
+* Interactive Theme Switcher Button (Light / Dark Toggle)
+* Project Category Filtering
+* Dynamic Search Bar for Skills and Projects
+* Smooth Scroll & Timeline Animations
+
+---
+
+## 📄 License
+
+Distributed under the MIT License.
+
+---
+
+## 👤 Author
+
+**YOUR NAME**
+
+* GitHub: [@YOUR_USERNAME](https://www.google.com/search?q=https://github.com/YOUR_USERNAME)
+* Live Portfolio: [View Portfolio](https://www.google.com/search?q=https://YOUR_USERNAME.github.io/YOUR_REPOSITORY/)
+
+```
+
+```

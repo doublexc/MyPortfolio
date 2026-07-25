@@ -1,0 +1,670 @@
+/* ==========================================================
+   Portfolio Style
+   Version : 1.1 (Dark Mode & Resume Print Fixes)
+========================================================== */
+
+/* ==========================================================
+   Reset & Base
+========================================================== */
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--text-color);
+    background: var(--background-color);
+    transition: background-color var(--transition), color var(--transition);
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    font: inherit;
+    cursor: pointer;
+    border: none;
+    background: none;
+}
+
+ul {
+    list-style: none;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+/* ==========================================================
+    Theme Variables (จับคู่สีตามดีไซน์ใหม่)
+========================================================== */
+:root {
+    /* สีพื้นหลังหลัก และ กล่องการ์ด */
+    --bg: #0d0f12;               /* สีพื้นหลังหลังสุด */
+    --surface: #13161b;          /* สีพื้นหลังการ์ด / กล่องข้อมูล */
+    --surface2: #1a1e25;         /* สีพื้นหลังตอน Hover หรือเน้นย้ำ */
+
+    /* สีเส้นขอบ */
+    --border: rgba(255, 255, 255, 0.07);
+    --border-hover: rgba(255, 255, 255, 0.14);
+
+    /* สีตัวอักษร */
+    --text: #e8eaf0;             /* สีตัวอักษรหลัก (ข้อความทั่วไป/หัวข้อ) */
+    --text-muted: #7a8190;       /* สีตัวอักษรรอง/คำอธิบาย */
+    --text-dim: #454c5a;         /* สีตัวอักษรจางๆ/ป้ายระบุ */
+
+    /* สีไฮไลต์ (Accent Color) */
+    --accent: #4f8ef7;           /* สีฟ้าไฮไลต์หลัก (ปุ่ม, ลิงก์, แท็ก) */
+    --accent-dim: rgba(79, 142, 247, 0.12);
+    --accent-glow: rgba(79, 142, 247, 0.25);
+
+    /* ฟอนต์ */
+    --font-sans: 'DM Sans', 'Inter', system-ui, sans-serif;
+    --font-mono: 'DM Mono', monospace;
+}
+
+/* ตั้งค่าสีพื้นหลังและตัวอักษรหลักของหน้าเว็บ */
+body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: var(--font-sans);
+}
+
+/* เพิ่มลวดลายตาราง Grid บนพื้นหลังแบบไฟล์ตัวอย่าง (ใส่หรือไม่ใส่ก็ได้) */
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(79, 142, 247, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(79, 142, 247, 0.03) 1px, transparent 1px);
+    background-size: 48px 48px;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* ==========================================================
+   Dark Theme Overrides (ใช้เมื่อ html หรือ body มี [data-theme="dark"])
+========================================================== */
+
+[data-theme="dark"], body.dark-theme {
+    --background-color: #0f172a;
+    --surface: #1e293b;
+    --border: #334155;
+    --text-color: #f8fafc;
+    --text-light: #94a3b8;
+    --shadow: 0 6px 20px rgba(0, 0, 0, .4);
+}
+
+/* ==========================================================
+   Typography
+========================================================== */
+
+h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+p, small {
+    color: var(--text-light);
+}
+
+/* ==========================================================
+   Layout
+========================================================== */
+
+.container {
+    width: min(100% - 2rem, var(--container));
+    margin: auto;
+}
+
+.section {
+    padding: 5rem 0;
+}
+
+.section-header {
+    margin-bottom: 2rem;
+}
+
+.grid {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.grid-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.grid-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.flex { display: flex; }
+.flex-column { display: flex; flex-direction: column; }
+.flex-center { display: flex; justify-content: center; align-items: center; }
+.space-between { display: flex; justify-content: space-between; align-items: center; }
+
+/* ==========================================================
+   Header & Navigation
+========================================================== */
+
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(255, 255, 255, .95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+}
+
+[data-theme="dark"] .header {
+    background: rgba(15, 23, 42, .95);
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 72px;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.menu {
+    display: flex;
+    gap: 2rem;
+}
+
+.menu a {
+    font-weight: 500;
+    color: var(--text-color);
+    transition: var(--transition);
+}
+
+.menu a:hover {
+    color: var(--primary);
+}
+
+/* ==========================================================
+   Hero
+========================================================== */
+
+.hero {
+    padding: 6rem 0;
+}
+
+.hero-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.hero-label {
+    display: inline-block;
+    margin-bottom: 1rem;
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.hero h1 { margin-bottom: .5rem; }
+.hero h2 { margin-bottom: .5rem; color: var(--secondary); }
+.hero h3 { margin-bottom: 1.5rem; color: var(--primary); }
+
+.hero-summary {
+    max-width: 700px;
+    margin-bottom: 2rem;
+}
+
+.hero-image {
+    display: flex;
+    justify-content: center;
+}
+
+.hero-image img {
+    width: 280px;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 6px solid var(--surface);
+    box-shadow: var(--shadow);
+}
+
+/* ==========================================================
+   Buttons
+========================================================== */
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+    padding: .85rem 1.5rem;
+    border-radius: 10px;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.btn-primary {
+    background: var(--primary);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: var(--primary-dark);
+}
+
+.btn-outline {
+    border: 2px solid var(--primary);
+    color: var(--primary);
+    background: transparent;
+}
+
+.btn-outline:hover {
+    background: var(--primary);
+    color: white;
+}
+
+.hero-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+/* ==========================================================
+   Card Component
+========================================================== */
+
+.card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+.card:hover {
+    transform: translateY(-4px);
+}
+
+.card h3 { margin-bottom: .75rem; }
+.card p { margin-bottom: .75rem; }
+
+.card strong {
+    display: block;
+    margin-bottom: .5rem;
+    color: var(--text-color);
+}
+
+.card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.card ul {
+    margin-top: .75rem;
+    padding-left: 1.2rem;
+}
+
+.card li {
+    list-style: disc;
+    margin-bottom: .35rem;
+    color: var(--text-light);
+}
+
+.button-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .75rem;
+    margin-top: 1.25rem;
+}
+
+/* ==========================================================
+   Info Table
+========================================================== */
+
+.info-table th {
+    width: 140px;
+    text-align: left;
+    vertical-align: top;
+    padding: .5rem 0;
+    color: var(--text-color);
+}
+
+.info-table td {
+    padding: .5rem 0;
+    color: var(--text-light);
+}
+
+/* ==========================================================
+   Skills & Tags
+========================================================== */
+
+.skill { margin-bottom: 1rem; }
+.skill:last-child { margin-bottom: 0; }
+
+.skill-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: .5rem;
+    font-weight: 600;
+}
+
+.skill-bar {
+    width: 100%;
+    height: 10px;
+    background: var(--border);
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.skill-fill {
+    height: 100%;
+    border-radius: 999px;
+    background: var(--primary);
+    transition: width .5s ease;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+    margin-top: 1rem;
+}
+
+.tag {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: .35rem .8rem;
+    border-radius: 999px;
+    background: rgba(37, 99, 235, 0.15);
+    color: var(--primary);
+    font-size: .875rem;
+    font-weight: 600;
+}
+
+/* ==========================================================
+   Projects & Languages Customizations
+========================================================== */
+
+#projects { align-items: stretch; }
+#projects .card { display: flex; flex-direction: column; height: 100%; }
+#projects .card p { flex: 1; }
+#projects img { aspect-ratio: 16/9; object-fit: cover; }
+#projects .button-group { margin-top: auto; }
+
+#languages .card { text-align: center; }
+#languages h3 { margin-bottom: .5rem; }
+#languages p { color: var(--primary); font-weight: 600; }
+
+/* ==========================================================
+   Social & Footer
+========================================================== */
+
+.social-list {
+    display: flex;
+    flex-direction: column;
+    gap: .75rem;
+}
+
+.social-list a {
+    color: var(--primary);
+    transition: var(--transition);
+}
+
+.social-list a:hover {
+    color: var(--primary-dark);
+    padding-left: .25rem;
+}
+
+.footer {
+    margin-top: 5rem;
+    padding: 2rem 0;
+    text-align: center;
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+}
+
+/* ==========================================================
+   Resume Specific Styling (สำหรับหน้า resume.html)
+========================================================== */
+
+.resume {
+    background: #cbd5e1;
+    padding: 2rem 0;
+}
+
+.resume-page {
+    width: 210mm;
+    min-height: 297mm;
+    margin: auto;
+    background: #ffffff;
+    color: #1e293b;
+    padding: 18mm;
+    box-shadow: var(--shadow);
+}
+
+/* ตกแต่ง Card ในหน้า Resume ให้กะทัดรัด เหมาะกับ 1 หน้ากระดาษ */
+.resume .card {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding: .5rem 0;
+    border-radius: 0;
+    border-bottom: 1px dashed var(--border);
+}
+
+.resume .card:hover {
+    transform: none;
+}
+
+.resume .card:last-child {
+    border-bottom: none;
+}
+
+.resume-header {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 2rem;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 2px solid var(--primary);
+}
+
+.resume-photo img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid var(--primary);
+}
+
+.resume-profile h1 { font-size: 2rem; color: #0f172a; }
+.resume-profile h2 { font-size: 1.2rem; color: var(--secondary); margin-bottom: .25rem; }
+.resume-profile h3 { color: var(--primary); margin-bottom: .5rem; }
+
+.resume-section { margin-bottom: 1.5rem; }
+.resume-section:last-child { margin-bottom: 0; }
+
+.resume-section h2 {
+    font-size: 1.15rem;
+    padding-bottom: .35rem;
+    margin-bottom: .75rem;
+    border-bottom: 2px solid var(--border);
+    color: var(--primary);
+    text-transform: uppercase;
+    letter-spacing: .5px;
+}
+
+.resume-contact {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: .75rem;
+}
+
+.resume-contact div { font-size: .95rem; }
+
+/* ==========================================================
+   Print Stylesheet
+========================================================== */
+
+@media print {
+    body {
+        background: #fff !important;
+        color: #000 !important;
+    }
+
+    .header,
+    .footer,
+    .hero-buttons,
+    .no-print {
+        display: none !important;
+    }
+
+    .resume {
+        padding: 0;
+        background: #fff;
+    }
+
+    .resume-page {
+        width: 100%;
+        min-height: auto;
+        margin: 0;
+        padding: 0;
+        box-shadow: none;
+    }
+
+    .section,
+    .resume-section {
+        page-break-inside: avoid;
+        break-inside: avoid;
+    }
+
+    .card {
+        break-inside: avoid;
+        box-shadow: none !important;
+        border: 1px solid #ddd !important;
+    }
+
+    .resume .card {
+        border: none !important;
+        border-bottom: 1px dashed #ccc !important;
+    }
+
+    a {
+        color: #000 !important;
+        text-decoration: none !important;
+    }
+}
+
+/* ==========================================================
+   Responsive Breakpoints
+========================================================== */
+
+@media (max-width: 992px) {
+    .grid-3 { grid-template-columns: repeat(2, 1fr); }
+    .hero-grid { grid-template-columns: 1fr; text-align: center; }
+    .hero-image { order: -1; }
+    .hero-buttons { justify-content: center; }
+}
+
+@media (max-width: 768px) {
+    h1 { font-size: 2.2rem; }
+    h2 { font-size: 1.6rem; }
+    .menu { flex-wrap: wrap; justify-content: center; gap: 1rem; }
+    .grid-2, .grid-3 { grid-template-columns: 1fr; }
+
+    .resume-page { width: 100%; padding: 1.5rem; }
+    .resume-header { grid-template-columns: 1fr; text-align: center; }
+    .resume-photo { display: flex; justify-content: center; }
+    .resume-contact { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 576px) {
+    body { font-size: 15px; }
+    .section { padding: 3rem 0; }
+    .container { width: min(100% - 1.25rem, var(--container)); }
+    .btn { width: 100%; }
+    .hero-image img { width: 220px; }
+    .info-table th, .info-table td { display: block; width: 100%; }
+    .info-table tr { display: block; margin-bottom: 1rem; }
+}
+
+/* ==========================================================
+   Utility Classes
+========================================================== */
+
+.hidden { display: none !important; }
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+.text-left { text-align: left; }
+
+.mt-1 { margin-top: 1rem; }
+.mt-2 { margin-top: 2rem; }
+.mt-3 { margin-top: 3rem; }
+.mb-1 { margin-bottom: 1rem; }
+.mb-2 { margin-bottom: 2rem; }
+.mb-3 { margin-bottom: 3rem; }
+
+.w-100 { width: 100%; }
+.round { border-radius: 50%; }
+.shadow { box-shadow: var(--shadow); }
+.border { border: 1px solid var(--border); }
+
+/* ปรับแถบ Header / Nav ด้านบนให้เป็นโทนเข้ม */
+header, nav, .navbar {
+    background-color: var(--bg) !important;
+    border-bottom: 1px solid var(--border);
+}
+
+/* ปรับสีตัวอักษรเมนูใน Nav */
+header a, nav a, .nav-links a {
+    color: var(--text-muted) !important;
+}
+
+header a:hover, nav a:hover, .nav-links a:hover {
+    color: var(--text) !important;
+}

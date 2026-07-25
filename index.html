@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="">
+    <title>Portfolio</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- =====================================
+            Header
+    ====================================== -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="#hero" class="logo">Portfolio</a>
+                <ul class="menu">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#educationSection">Education</a></li>
+                    <li><a href="#experienceSection">Experience</a></li>
+                    <li><a href="#skillsSection">Skills</a></li>
+                    <li><a href="#projectsSection">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- =====================================
+            Hero Section
+    ====================================== -->
+    <section id="hero" class="hero">
+        <div class="container">
+            <div class="hero-grid">
+                <!-- Left -->
+                <div class="hero-content">
+                    <p class="hero-label">Hello, I'm</p>
+                    <h1 id="nameEN" class="nameEN"></h1>
+                    <h2 id="nameTH" class="nameTH"></h2>
+                    <h3 id="jobTitle" class="jobTitle"></h3>
+                    <p class="hero-summary summary"></p>
+
+                    <div class="hero-buttons">
+                        <a class="btn btn-primary github" target="_blank">GitHub</a>
+                        <a class="btn btn-outline portfolio" target="_blank">Portfolio PDF</a>
+                    </div>
+                </div>
+
+                <!-- Right -->
+                <div class="hero-image">
+                    <img id="profilePhoto" class="profilePhoto" src="" alt="Profile">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main>
+        <!-- =====================================
+                About Section
+        ====================================== -->
+        <section id="about" class="section">
+            <div class="container">
+                <h2>About Me</h2>
+                <div class="card">
+                    <!-- Objective (สวิตช์เปิด/ปิดได้จาก settings.showObjective) -->
+                    <div id="objectiveSection" style="margin-bottom: 1rem;">
+                        <h4>Career Objective</h4>
+                        <p id="objective" class="objective"></p>
+                        <hr style="margin: 1rem 0; border: 0; border-top: 1px solid #eee;">
+                    </div>
+                    <p class="summary"></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- =====================================
+                Education
+        ====================================== -->
+        <section id="educationSection" class="section" data-section>
+            <div class="container">
+                <div class="section-header">
+                    <h2>Education</h2>
+                </div>
+                <div id="education" class="grid grid-2"></div>
+            </div>
+        </section>
+
+        <!-- =====================================
+                Experience
+        ====================================== -->
+        <section id="experienceSection" class="section" data-section>
+            <div class="container">
+                <div class="section-header">
+                    <h2>Experience</h2>
+                </div>
+                <div id="experience" class="grid"></div>
+            </div>
+        </section>
+
+        <!-- =====================================
+                Personal Information & Contact
+        ====================================== -->
+        <section id="information" class="section">
+            <div class="container">
+                <div class="grid grid-2">
+                    <!-- Personal Info Card -->
+                    <div class="card">
+                        <h3>Personal Information</h3>
+                        <table class="info-table">
+                            <tbody>
+                                <tr>
+                                    <th>Nickname</th>
+                                    <td id="nickname" class="nickname"></td>
+                                </tr>
+                                <tr id="birthdaySection">
+                                    <th>Birthday</th>
+                                    <td id="birthday" class="birthday"></td>
+                                </tr>
+                                <tr>
+                                    <th>Gender</th>
+                                    <td id="gender" class="gender"></td>
+                                </tr>
+                                <tr>
+                                    <th>Nationality</th>
+                                    <td id="nationality" class="nationality"></td>
+                                </tr>
+                                <tr id="religionSection">
+                                    <th>Religion</th>
+                                    <td id="religion" class="religion"></td>
+                                </tr>
+                                <tr>
+                                    <th>Address</th>
+                                    <td id="address" class="address"></td>
+                                </tr>
+                                <tr>
+                                    <th>District</th>
+                                    <td id="district" class="district"></td>
+                                </tr>
+                                <tr>
+                                    <th>Province</th>
+                                    <td id="province" class="province"></td>
+                                </tr>
+                                <tr>
+                                    <th>Country</th>
+                                    <td id="country" class="country"></td>
+                                </tr>
+                                <tr>
+                                    <th>Zipcode</th>
+                                    <td id="zipcode" class="zipcode"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Direct Contact Card -->
+                    <div class="card">
+                        <h3>Contact Info</h3>
+                        <table class="info-table">
+                            <tbody>
+                                <tr>
+                                    <th>Email</th>
+                                    <td class="email"></td>
+                                </tr>
+                                <tr>
+                                    <th>Phone</th>
+                                    <td class="phone"></td>
+                                </tr>
+                                <tr>
+                                    <th>Website</th>
+                                    <td><a id="website" class="website" target="_blank"></a></td>
+                                </tr>
+                                <tr>
+                                    <th>LinkedIn</th>
+                                    <td><a id="linkedin" class="linkedin" target="_blank"></a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =====================================
+                Skills
+        ====================================== -->
+        <section id="skillsSection" class="section" data-section>
+            <div class="container">
+                <div class="section-header">
+                    <h2>Skills</h2>
+                </div>
+                <div id="skills" class="grid grid-2"></div>
+            </div>
+        </section>
+
+        <!-- =====================================
+                Languages
+        ====================================== -->
+        <section id="languagesSection" class="section" data-section>
+            <div class="container">
+                <div class="section-header">
+                    <h2>Languages</h2>
+                </div>
+                <div id="languages" class="grid grid-3"></div>
+            </div>
+        </section>
+
+        <!-- =====================================
+                Projects
+        ====================================== -->
+        <section id="projectsSection" class="section" data-section>
+            <div class="container">
+                <div class="section-header">
+                    <h2>Projects</h2>
+                </div>
+                <div id="projects" class="grid grid-3"></div>
+            </div>
+        </section>
+
+        <!-- =====================================
+                Featured Projects
+        ====================================== -->
+        <section id="featuredProjectsSection" class="section" data-section>
+            <div class="container">
+                <div class="section-header">
+                    <h2>Featured Projects</h2>
+                </div>
+                <div id="portfolioProjects" class="grid grid-2"></div>
+            </div>
+        </section>
+
+        <!-- =====================================
+                Interests
+        ====================================== -->
+        <section id="interestsSection" class="section" data-section>
+            <div class="container">
+                <div class="section-header">
+                    <h2>Interests</h2>
+                </div>
+                <div id="interests" class="tags"></div>
+            </div>
+        </section>
+
+        <!-- =====================================
+                Certificates
+        ====================================== -->
+        <section id="certificatesSection" class="section" data-section>
+            <div class="container">
+                <div class="section-header">
+                    <h2>Certificates</h2>
+                </div>
+                <div id="certificates" class="grid grid-2"></div>
+            </div>
+        </section>
+
+        <!-- =====================================
+                Awards
+        ====================================== -->
+        <section id="awardsSection" class="section" data-section>
+            <div class="container">
+                <div class="section-header">
+                    <h2>Awards</h2>
+                </div>
+                <div id="awards" class="grid grid-2"></div>
+            </div>
+        </section>
+
+        <!-- =====================================
+                Activities
+        ====================================== -->
+        <section id="activitiesSection" class="section" data-section>
+            <div class="container">
+                <div class="section-header">
+                    <h2>Activities</h2>
+                </div>
+                <div id="activities" class="grid grid-2"></div>
+            </div>
+        </section>
+
+        <!-- =====================================
+                References
+        ====================================== -->
+        <section id="referencesSection" class="section" data-section>
+            <div class="container">
+                <div class="section-header">
+                    <h2>References</h2>
+                </div>
+                <div id="references" class="grid grid-2"></div>
+            </div>
+        </section>
+
+        <!-- =====================================
+                Contact Section
+        ====================================== -->
+        <section id="contact" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Get In Touch</h2>
+                </div>
+
+                <div class="grid grid-2">
+                    <div class="card">
+                        <h3>Contact Details</h3>
+                        <p><strong>Email:</strong> <span class="email"></span></p>
+                        <br>
+                        <p><strong>Phone:</strong> <span class="phone"></span></p>
+                        <br>
+                        <p><strong>GitHub:</strong> <a class="github" target="_blank"></a></p>
+                        <br>
+                        <p><strong>Portfolio:</strong> <a class="portfolio" target="_blank"></a></p>
+                        <br>
+                        <p><strong>LinkedIn:</strong> <a class="linkedin" target="_blank"></a></p>
+                    </div>
+
+                    <div class="card">
+                        <h3>Social Links</h3>
+                        <ul class="social-list">
+                            <li><a id="facebook" class="social-facebook" target="_blank">Facebook</a></li>
+                            <li><a id="x" class="social-x" target="_blank">X (Twitter)</a></li>
+                            <li><a id="instagram" class="social-instagram" target="_blank">Instagram</a></li>
+                            <li><a id="youtube" class="social-youtube" target="_blank">YouTube</a></li>
+                            <li><a id="discord" class="social-discord">Discord</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- =====================================
+            Footer
+    ====================================== -->
+    <footer class="footer">
+        <div class="container">
+            <p>© <span id="copyrightYear">2026</span> Portfolio. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- =====================================
+            Script
+    ====================================== -->
+    <script src="js/render.js"></script>
+</body>
+
+</html>

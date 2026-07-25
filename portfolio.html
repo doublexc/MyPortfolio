@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio">
+    <title>Portfolio</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="portfolio">
+
+    <main class="portfolio-page">
+
+        <!-- =====================================
+                Cover
+        ====================================== -->
+        <section class="portfolio-cover">
+            <img id="profilePhoto" class="portfolio-photo profilePhoto" src="" alt="Profile">
+            <h1 id="nameEN" class="nameEN"></h1>
+            <h2 id="nameTH" class="nameTH"></h2>
+            <h3 id="jobTitle" class="jobTitle"></h3>
+            <p id="summary" class="summary"></p>
+        </section>
+
+        <!-- =====================================
+                About
+        ====================================== -->
+        <section class="portfolio-section">
+            <h2>About Me</h2>
+            <div class="card">
+                <div id="objectiveSection">
+                    <h4>Objective</h4>
+                    <p id="objective" class="objective"></p>
+                    <hr style="margin: 1rem 0; border: 0; border-top: 1px dashed var(--border);">
+                </div>
+                <p class="summary"></p>
+            </div>
+        </section>
+
+        <!-- =====================================
+                Personal Information
+        ====================================== -->
+        <section class="portfolio-section">
+            <h2>Personal Information</h2>
+            <div class="grid grid-2">
+                <div class="card">
+                    <table class="info-table">
+                        <tbody>
+                            <tr>
+                                <th>Nickname</th>
+                                <td class="nickname"></td>
+                            </tr>
+                            <tr id="birthdaySection">
+                                <th>Birthday</th>
+                                <td class="birthday"></td>
+                            </tr>
+                            <tr>
+                                <th>Gender</th>
+                                <td class="gender"></td>
+                            </tr>
+                            <tr>
+                                <th>Nationality</th>
+                                <td class="nationality"></td>
+                            </tr>
+                            <tr id="religionSection">
+                                <th>Religion</th>
+                                <td class="religion"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="card">
+                    <table class="info-table">
+                        <tbody>
+                            <tr>
+                                <th>Email</th>
+                                <td class="email"></td>
+                            </tr>
+                            <tr>
+                                <th>Phone</th>
+                                <td class="phone"></td>
+                            </tr>
+                            <tr>
+                                <th>Address</th>
+                                <td class="address"></td>
+                            </tr>
+                            <tr>
+                                <th>Province</th>
+                                <td class="province"></td>
+                            </tr>
+                            <tr>
+                                <th>Country</th>
+                                <td class="country"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- =====================================
+                Education
+        ====================================== -->
+        <section class="portfolio-section" data-section>
+            <h2>Education</h2>
+            <div id="education" class="grid grid-2"></div>
+        </section>
+
+        <!-- =====================================
+                Experience
+        ====================================== -->
+        <section class="portfolio-section" data-section>
+            <h2>Experience</h2>
+            <div id="experience" class="grid"></div>
+        </section>
+
+        <!-- =====================================
+                Skills
+        ====================================== -->
+        <section class="portfolio-section" data-section>
+            <h2>Skills</h2>
+            <div id="skills" class="grid grid-2"></div>
+        </section>
+
+        <!-- =====================================
+                Languages
+        ====================================== -->
+        <section class="portfolio-section" data-section>
+            <h2>Languages</h2>
+            <div id="languages" class="grid grid-3"></div>
+        </section>
+
+        <!-- =====================================
+                Projects
+        ====================================== -->
+        <section class="portfolio-section" data-section>
+            <h2>Projects</h2>
+            <div id="portfolioProjects" class="grid grid-3"></div>
+        </section>
+
+        <!-- =====================================
+                Certificates
+        ====================================== -->
+        <section id="certificatesSection" class="portfolio-section" data-section>
+            <h2>Certificates</h2>
+            <div id="certificates" class="grid grid-2"></div>
+        </section>
+
+        <!-- =====================================
+                Awards
+        ====================================== -->
+        <section id="awardsSection" class="portfolio-section" data-section>
+            <h2>Awards</h2>
+            <div id="awards" class="grid grid-2"></div>
+        </section>
+
+        <!-- =====================================
+                Activities
+        ====================================== -->
+        <section id="activitiesSection" class="portfolio-section" data-section>
+            <h2>Activities</h2>
+            <div id="activities" class="grid grid-2"></div>
+        </section>
+
+        <!-- =====================================
+                Interests
+        ====================================== -->
+        <section id="interestsSection" class="portfolio-section" data-section>
+            <h2>Interests</h2>
+            <div id="interests" class="tags"></div>
+        </section>
+
+        <!-- =====================================
+                References
+        ====================================== -->
+        <section id="referencesSection" class="portfolio-section" data-section>
+            <h2>References</h2>
+            <div id="references" class="grid grid-2"></div>
+        </section>
+
+        <!-- =====================================
+                Contact
+        ====================================== -->
+        <section class="portfolio-section">
+            <h2>Contact</h2>
+            <div class="grid grid-2">
+                <div class="card">
+                    <table class="info-table">
+                        <tbody>
+                            <tr>
+                                <th>Email</th>
+                                <td class="email"></td>
+                            </tr>
+                            <tr>
+                                <th>Phone</th>
+                                <td class="phone"></td>
+                            </tr>
+                            <tr>
+                                <th>Website</th>
+                                <td><a class="website" target="_blank"></a></td>
+                            </tr>
+                            <tr>
+                                <th>GitHub</th>
+                                <td><a class="github" target="_blank"></a></td>
+                            </tr>
+                            <tr>
+                                <th>Portfolio</th>
+                                <td><a class="portfolio" target="_blank"></a></td>
+                            </tr>
+                            <tr>
+                                <th>LinkedIn</th>
+                                <td><a class="linkedin" target="_blank"></a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="card">
+                    <h3>Social Media</h3>
+                    <ul class="social-list">
+                        <li><a id="facebook" class="social-facebook" target="_blank">Facebook</a></li>
+                        <li><a id="instagram" class="social-instagram" target="_blank">Instagram</a></li>
+                        <li><a id="x" class="social-x" target="_blank">X (Twitter)</a></li>
+                        <li><a id="youtube" class="social-youtube" target="_blank">YouTube</a></li>
+                        <li><a id="discord" class="social-discord">Discord</a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="js/render.js"></script>
+</body>
+
+</html>
