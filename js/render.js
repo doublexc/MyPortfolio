@@ -474,3 +474,32 @@ async function init(){
 }
 
 document.addEventListener("DOMContentLoaded", init);
+
+/* ==========================================================
+    Back to Top Button Functionality
+========================================================== */
+
+function initBackToTop() {
+    const backToTopBtn = document.getElementById("backToTop");
+    if (!backToTopBtn) return;
+
+    // ตรวจสอบการเลื่อนหน้าจอเพื่อเปิด/ปิดการแสดงผลปุ่ม
+    window.addEventListener("scroll", () => {
+        if (window.scrollY > 300) {
+            backToTopBtn.style.display = "block";
+        } else {
+            backToTopBtn.style.display = "none";
+        }
+    });
+
+    // เมื่อกดปุ่ม ให้เลื่อนขึ้นด้านบนแบบนุ่มนวล
+    backToTopBtn.addEventListener("click", () => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    });
+}
+
+// เรียกใช้งานเมื่อโหลด DOM เสร็จสิ้น
+document.addEventListener("DOMContentLoaded", initBackToTop);
