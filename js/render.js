@@ -16,20 +16,27 @@ const $$ = (selector) => document.querySelectorAll(selector);
 const byId = (id) => document.getElementById(id);
 const exists = (id) => byId(id) !== null;
 
+// 1. อ่าน Key จาก URL
+const urlParams = new URLSearchParams(window.location.search);
+let userKey = urlParams.get("key");
+
+// 2. ถ้ามี Key ให้เก็บลง sessionStorage แต่ถ้าไม่มีให้ดึงค่าเดิมที่เคยเก็บไว้
+if (userKey) {
+  sessionStorage.setItem("portfolio_key", userKey);
+} else {
+  userKey = sessionStorage.getItem("portfolio_key") || "";
+}
+
 /* ==========================================================
     JSON Loading (Cloudflare Worker Integration)
 ========================================================== */
 
-async function loadConfig(){
-    // 1. ดึงค่า ?key= จาก URL บนหน้าจอเบราว์เซอร์
-    const urlParams = new URLSearchParams(window.location.search);
-    const accessKey = urlParams.get('key') || '';
+async function loadConfig() {
+    // 1. ใส่ URL ของ Cloudflare Worker ของคุณ
+    const WORKER_URL = "https://portfolio-api.xxxcopyxx.workers.dev/"; // ⚠️ เปลี่ยนเป็น URL Worker จริงของคุณ
 
-    // 2. ใส่ URL ของ Cloudflare Worker ของคุณ
-    const WORKER_URL = "https://portfolio-api.xxxcopyxx.workers.dev/"; // ⚠️ เปลี่ยนตรงนี้เป็น URL จริงของคุณ
-
-    // 3. ดึงข้อมูลจาก Worker API
-    const response = await fetch(`${WORKER_URL}?key=${accessKey}`);
+    // 2. ดึงข้อมูลจาก Worker API โดยส่ง userKey ที่บันทึกไว้
+    const response = await fetch(`${WORKER_URL}?key=${encodeURIComponent(userKey)}`);
     if(!response.ok){
         throw new Error(`Cannot load config from Worker API (${response.status})`);
     }
@@ -80,11 +87,19 @@ function linkAll(selector, url="", label=""){
         if(!url){
             return;
         }
-        el.href = url;
+        
+        // 🟢 เพิ่มการแนบ ?key=... ต่อท้ายปุ่ม Portfolio / PDF เพื่อไม่ให้ข้อมูลหลุดล็อก
+        let finalUrl = url;
+        if (selector.includes("portfolio") && userKey) {
+            const hasParams = finalUrl.includes("?");
+            finalUrl = `${finalUrl}${hasParams ? "&" : "?"}key=${encodeURIComponent(userKey)}`;
+        }
+
+        el.href = finalUrl;
         if(label){
             el.textContent = label;
         } else if(!el.textContent.trim()){
-            el.textContent = url;
+            el.textContent = finalUrl;
         }
     });
 }
@@ -128,14 +143,6 @@ function renderSection(id, data, builder){
 }
 
 /* ==========================================================
-    Visibility & Settings
-========================================================== */
-
-/* ==========================================================
-    Visibility & Settings
-========================================================== */
-
-/* ==========================================================
     Visibility & Settings (Smart Auto-Hide)
 ========================================================== */
 
@@ -148,13 +155,12 @@ function visible(id, show){
 function applySettings(){
     const s = CONFIG.settings || {};
 
-    // ฟังก์ชันฉลาด: ค้นหา Class ในหน้าเว็บ แล้วสั่งซ่อนทั้งแถวตาราง (tr) หรือกล่องนั้นๆ ให้อัตโนมัติ
     const toggleByClass = (className, isVisible) => {
         if (isVisible === undefined) return;
         document.querySelectorAll('.' + className).forEach(el => {
             const tr = el.closest('tr');
             if (tr) {
-                tr.style.display = isVisible ? "" : "none"; // ถ้าอยู่ในตาราง ให้ซ่อนทั้งแถว
+                tr.style.display = isVisible ? "" : "none";
             } else {
                 const parentBox = el.closest('p, div');
                 if (parentBox && parentBox.children.length <= 2) {
@@ -166,13 +172,11 @@ function applySettings(){
         });
     };
 
-    // สั่งเปิด-ปิด ตามคลาสที่เราเคยใส่ไว้ใน HTML
     toggleByClass("birthday", s.showBirthday);
     toggleByClass("religion", s.showReligion);
     toggleByClass("address", s.showAddress);
     toggleByClass("phone", s.showPhone);
 
-    // สั่งเปิด-ปิด Section ใหญ่ๆ
     visible("birthdaySection", s.showBirthday);
     visible("religionSection", s.showReligion);
     visible("objectiveSection", s.showObjective);
