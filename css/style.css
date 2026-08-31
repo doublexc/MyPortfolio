@@ -692,3 +692,66 @@ header a:hover, nav a:hover, .nav-links a:hover {
     transform: translateY(-3px);
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
 }
+
+
+/* ==========================================================
+   Android Print & PDF Spooler Fix
+========================================================== */
+@media print {
+  /* 1. บังคับแสดงสีและกราฟิกทั้งหมด */
+  *, *::before, *::after {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+    box-sizing: border-box !important;
+  }
+
+  /* 2. ปลดล็อคความสูงและ overflow ทั้งหมด (จุดสำคัญที่ทำให้หน้าขาว) */
+  html, body {
+    width: 100% !important;
+    height: auto !important;
+    min-height: auto !important;
+    overflow: visible !important;
+    position: static !important;
+    background: #ffffff !important;
+    color: #111111 !important;
+    font-size: 12pt !important;
+  }
+
+  /* 3. ซ่อนแถบเมนู ปุ่ม และสิ่งที่ไม่ควรอยู่ในเอกสาร PDF */
+  header,
+  .header,
+  .hero-buttons,
+  .back-to-top,
+  #backToTop,
+  nav {
+    display: none !important;
+  }
+
+  /* 4. ปรับ Layout กริดและการ์ดให้ไหลตามแนวตั้งแบบเอกสาร */
+  main, .container, section, .hero {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow: visible !important;
+    display: block !important;
+  }
+
+  .grid, .hero-grid {
+    display: block !important;
+  }
+
+  .card {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    margin-bottom: 15px !important;
+    border: 1px solid #e0e0e0 !important;
+    box-shadow: none !important;
+  }
+
+  /* 5. บังคับสีตัวหนังสือทั้งหมดให้เป็นสีเข้ม */
+  p, h1, h2, h3, h4, h5, h6, span, td, th, li, a {
+    color: #111111 !important;
+  }
+}
