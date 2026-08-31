@@ -693,11 +693,16 @@ header a:hover, nav a:hover, .nav-links a:hover {
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
 }
 
-
 /* ==========================================================
    Android Print & PDF Spooler Fix
 ========================================================== */
 @media print {
+  /* บังคับให้ทุก Element มองเห็นได้ 100% ไม่ติดซ่อนหรือโปร่งใส */
+  body, main, section, div, p, span, h1, h2, h3, h4, table, tr, td, th, img, a {
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
   /* 1. บังคับแสดงสีและกราฟิกทั้งหมด */
   *, *::before, *::after {
     -webkit-print-color-adjust: exact !important;
@@ -706,7 +711,7 @@ header a:hover, nav a:hover, .nav-links a:hover {
     box-sizing: border-box !important;
   }
 
-  /* 2. ปลดล็อคความสูงและ overflow ทั้งหมด (จุดสำคัญที่ทำให้หน้าขาว) */
+  /* 2. ปลดล็อคความสูงและ overflow ทั้งหมด */
   html, body {
     width: 100% !important;
     height: auto !important;
@@ -728,7 +733,7 @@ header a:hover, nav a:hover, .nav-links a:hover {
     display: none !important;
   }
 
-  /* 4. ปรับ Layout กริดและการ์ดให้ไหลตามแนวตั้งแบบเอกสาร */
+  /* 4. ปรับ Layout กริดและการ์ดให้ไหลตามแนวตั้ง */
   main, .container, section, .hero {
     width: 100% !important;
     max-width: 100% !important;
